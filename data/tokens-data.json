@@ -1799,7 +1799,7 @@
   "lastUpdated": "2025-07-15T22:51:26.562Z",
   "recordCount": 69,
   "bigquery_sync": {
-    "synced_at": "2025-07-15T17:52:46.968259",
+    "synced_at": "2025-07-15T17:54:17.765394",
     "source": "BigQuery Python Sync",
     "bigquery_updated": "2025-07-15T22:51:26.562000+00:00",
     "export_timestamp": "2025-07-15T22:51:26.562000+00:00"
