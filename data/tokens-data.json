@@ -1796,12 +1796,12 @@
       "impactLevel": "Low"
     }
   ],
-  "lastUpdated": "2025-07-15T22:21:26.290Z",
+  "lastUpdated": "2025-07-15T22:31:29.486Z",
   "recordCount": 69,
   "bigquery_sync": {
-    "synced_at": "2025-07-15T17:22:30.011444",
+    "synced_at": "2025-07-15T17:32:35.735871",
     "source": "BigQuery Python Sync",
-    "bigquery_updated": "2025-07-15T22:21:26.290000+00:00",
-    "export_timestamp": "2025-07-15T22:21:26.290000+00:00"
+    "bigquery_updated": "2025-07-15T22:31:29.486000+00:00",
+    "export_timestamp": "2025-07-15T22:31:29.486000+00:00"
   }
 }
