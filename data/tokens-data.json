@@ -1796,12 +1796,16 @@
       "impactLevel": "Low"
     }
   ],
-  "lastUpdated": "2025-07-15T23:21:26.241Z",
+  "lastUpdated": "2025-07-15T23:58:02.355Z",
   "recordCount": 69,
-  "bigquery_sync": {
-    "synced_at": "2025-07-15T18:25:11.271360",
-    "source": "BigQuery Python Sync",
-    "bigquery_updated": "2025-07-15T23:21:26.242000+00:00",
-    "export_timestamp": "2025-07-15T23:21:26.242000+00:00"
-  }
+  "summary": {
+    "totalTokens": 69,
+    "colorTokens": 68,
+    "typeTokens": 1,
+    "byStatus": {
+      "Validating LC": 1,
+      "Recently launched": 68
+    }
+  },
+  "source": "Google Sheets via Apps Script Auto-Sync"
 }
