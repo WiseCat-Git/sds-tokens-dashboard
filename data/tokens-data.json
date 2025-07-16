@@ -22,7 +22,7 @@
       "tokenChange": "Type",
       "component": "Headline",
       "leName": "Launch ramp",
-      "uniqueKey": "sds.sys.typescale.title-lg.font_Headline_Validating LC",
+      "lookerUniqueKey": "Ads UI_Headline_Launch ramp",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2025",
       "impactLevel": "Low"
@@ -48,7 +48,7 @@
       "tokenChange": "Color",
       "component": "Favicon Background",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.surface-container_Favicon Background_Recently launched",
+      "lookerUniqueKey": "David Naber_Favicon Background_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -74,7 +74,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.surface-container-action__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -100,7 +100,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.surface-container-high__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -126,7 +126,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.surface-container-highest__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -152,7 +152,7 @@
       "tokenChange": "Color",
       "component": "Snippet\nSitelinks Subtitle",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.default_Snippet\nSitelinks Subtitle_Recently launched",
+      "lookerUniqueKey": "Adnan Akil_Snippet\nSitelinks Subtitle_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q2 2025",
       "impactLevel": "Low"
@@ -178,7 +178,7 @@
       "tokenChange": "Color",
       "component": "VisURL\nOverflow icon\nSitelinks Chevron",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.de-emphasis_VisURL\nOverflow icon\nSitelinks Chevron_Recently launched",
+      "lookerUniqueKey": "Adnan Akil_VisURL\nOverflow icon\nSitelinks Chevron_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q2 2025",
       "impactLevel": "Medium"
@@ -204,7 +204,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.tertiary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -230,7 +230,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.tertiary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -256,7 +256,7 @@
       "tokenChange": "Color",
       "component": "Favicon Background",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.surface-container_Favicon Background_Recently launched",
+      "lookerUniqueKey": "David Naber_Favicon Background_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -282,7 +282,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.surface-container-action__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -308,7 +308,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.surface-container-high__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -334,7 +334,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.surface-container-highest__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -360,7 +360,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.canvas__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -386,7 +386,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.canvas__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -412,7 +412,7 @@
       "tokenChange": "Color",
       "component": "Results Background",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.surface_Results Background_Recently launched",
+      "lookerUniqueKey": "David Naber_Results Background_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -438,7 +438,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.surface-container__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -464,7 +464,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.surface-container-action__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -490,7 +490,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.surface-container-high__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -516,7 +516,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.surface-elevated__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -542,7 +542,7 @@
       "tokenChange": "Color",
       "component": "Headline\nSitelinks Title",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.link.default_Headline\nSitelinks Title_Recently launched",
+      "lookerUniqueKey": "David Naber_Headline\nSitelinks Title_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -568,7 +568,7 @@
       "tokenChange": "Color",
       "component": "VisURL\nOverflow icon",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.de-emphasis_VisURL\nOverflow icon_Recently launched",
+      "lookerUniqueKey": "David Naber_VisURL\nOverflow icon_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -594,7 +594,7 @@
       "tokenChange": "Color",
       "component": "Snippet\nSitelinks Subtitle",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.default_Snippet\nSitelinks Subtitle_Recently launched",
+      "lookerUniqueKey": "David Naber_Snippet\nSitelinks Subtitle_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -620,7 +620,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.emphasis__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -646,7 +646,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.icon.primary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -672,7 +672,7 @@
       "tokenChange": "Color",
       "component": "Overflow icon",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.icon.secondary_Overflow icon_Recently launched",
+      "lookerUniqueKey": "David Naber_Overflow icon_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -698,7 +698,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.divider.default__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -724,7 +724,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.divider-variant__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -750,7 +750,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.outline.default__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -776,7 +776,7 @@
       "tokenChange": "Color",
       "component": "Favicon Outline",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.outline-variant_Favicon Outline_Recently launched",
+      "lookerUniqueKey": "David Naber_Favicon Outline_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -802,7 +802,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.primary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -828,7 +828,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.primary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -854,7 +854,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-primary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -880,7 +880,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.tertiary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -906,7 +906,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.emphasis-variant__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -932,7 +932,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-tertiary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -958,7 +958,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.divider.secondary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -984,7 +984,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-secondary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q1 2024",
       "impactLevel": "Low"
@@ -1010,7 +1010,7 @@
       "tokenChange": "Color",
       "component": "Snippet\nSitelinks Subtitle",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.default_Snippet\nSitelinks Subtitle_Recently launched",
+      "lookerUniqueKey": "David Naber_Snippet\nSitelinks Subtitle_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -1036,7 +1036,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.emphasis__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -1062,7 +1062,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.emphasis-variant__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -1088,7 +1088,7 @@
       "tokenChange": "Color",
       "component": "VisURL\nOverflow icon",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.de-emphasis_VisURL\nOverflow icon_Recently launched",
+      "lookerUniqueKey": "David Naber_VisURL\nOverflow icon_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -1114,7 +1114,7 @@
       "tokenChange": "Color",
       "component": "Favicon Outline",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.outline.default_Favicon Outline_Recently launched",
+      "lookerUniqueKey": "David Naber_Favicon Outline_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -1140,7 +1140,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-secondary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -1166,7 +1166,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.primary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -1192,7 +1192,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.primary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -1218,7 +1218,7 @@
       "tokenChange": "Color",
       "component": "Fallback Favicon Icon",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.icon.primary_Fallback Favicon Icon_Recently launched",
+      "lookerUniqueKey": "David Naber_Fallback Favicon Icon_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -1244,7 +1244,7 @@
       "tokenChange": "Color",
       "component": "Overflow icon",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.icon.secondary_Overflow icon_Recently launched",
+      "lookerUniqueKey": "David Naber_Overflow icon_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -1270,7 +1270,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.divider.secondary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -1296,7 +1296,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-tertiary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q3 2024",
       "impactLevel": "Low"
@@ -1322,7 +1322,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.canvas__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q2 2024",
       "impactLevel": "Low"
@@ -1348,7 +1348,7 @@
       "tokenChange": "Color",
       "component": "Results Background",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.surface_Results Background_Recently launched",
+      "lookerUniqueKey": "David Naber_Results Background_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q2 2024",
       "impactLevel": "Low"
@@ -1374,7 +1374,7 @@
       "tokenChange": "Color",
       "component": "Snippet\nSitelinks Subtitle",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.default_Snippet\nSitelinks Subtitle_Recently launched",
+      "lookerUniqueKey": "David Naber_Snippet\nSitelinks Subtitle_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q2 2024",
       "impactLevel": "Low"
@@ -1400,7 +1400,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.emphasis__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q2 2024",
       "impactLevel": "Low"
@@ -1426,7 +1426,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.emphasis-variant__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q2 2024",
       "impactLevel": "Low"
@@ -1452,7 +1452,7 @@
       "tokenChange": "Color",
       "component": "VisURL\nOverflow icon",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.de-emphasis_VisURL\nOverflow icon_Recently launched",
+      "lookerUniqueKey": "David Naber_VisURL\nOverflow icon_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q2 2024",
       "impactLevel": "Low"
@@ -1478,7 +1478,7 @@
       "tokenChange": "Color",
       "component": "Overflow icon",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.icon.secondary_Overflow icon_Recently launched",
+      "lookerUniqueKey": "David Naber_Overflow icon_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q2 2024",
       "impactLevel": "Low"
@@ -1504,7 +1504,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.icon.primary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q2 2024",
       "impactLevel": "Low"
@@ -1530,7 +1530,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.divider.default__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q2 2024",
       "impactLevel": "Low"
@@ -1556,7 +1556,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.divider.secondary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q2 2024",
       "impactLevel": "Low"
@@ -1582,7 +1582,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.divider-variant__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q2 2024",
       "impactLevel": "Low"
@@ -1608,7 +1608,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.outline.default__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q2 2024",
       "impactLevel": "Low"
@@ -1634,7 +1634,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-secondary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q2 2024",
       "impactLevel": "Low"
@@ -1660,7 +1660,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-tertiary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q2 2024",
       "impactLevel": "Low"
@@ -1686,7 +1686,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.tertiary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q2 2024",
       "impactLevel": "Low"
@@ -1712,7 +1712,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-primary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q2 2024",
       "impactLevel": "Low"
@@ -1738,7 +1738,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.primary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q2 2024",
       "impactLevel": "Low"
@@ -1764,7 +1764,7 @@
       "tokenChange": "Color",
       "component": "",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.primary__Recently launched",
+      "lookerUniqueKey": "David Naber_General_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q2 2024",
       "impactLevel": "Low"
@@ -1790,14 +1790,19 @@
       "tokenChange": "Color",
       "component": "Headline\nSitelinks Title",
       "leName": "Holdback",
-      "uniqueKey": "sds.sys.color.on-surface.link.default_Headline\nSitelinks Title_Recently launched",
+      "lookerUniqueKey": "David Naber_Headline\nSitelinks Title_Holdback",
       "recordCount": 1,
       "leTargetLaunchQuarter": "Q2 2024",
       "impactLevel": "Low"
     }
   ],
-  "lastUpdated": "2025-07-16T01:23:34.362Z",
+  "lastUpdated": "2025-07-16T01:28:33.584Z",
   "recordCount": 69,
+  "lookerMetrics": {
+    "totalDistinctChanges": 12,
+    "colorRecordCount": 68,
+    "typeDistinctChanges": 1
+  },
   "summary": {
     "totalTokens": 69,
     "colorTokens": 68,
@@ -1806,6 +1811,5 @@
       "Validating LC": 1,
       "Recently launched": 68
     }
-  },
-  "source": "Google Sheets via Apps Script Auto-Sync"
+  }
 }
