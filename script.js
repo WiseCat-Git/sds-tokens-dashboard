@@ -489,7 +489,7 @@ function generateDetailsTable() {
     
     // Generate headers
     const headers = [
-        'Type', 'Team', 'Ad Format', 'Component(s)', 'Category',
+        'Type', 'Ad Format', 'Component(s)', 'Category',
         'Token', 'Surface', 'Theme', 'Old Value', 'New Value',
         'Launch Target', 'Status', 'Doc'
     ];
@@ -511,7 +511,6 @@ function generateTableRows() {
     tableBody.innerHTML = filteredData.map(item => `
         <tr>
             <td><span class="token-type-badge type-${(item.tokenChange || item.tokenType || '').toLowerCase().includes('color') ? 'color' : 'font'}">${item.tokenChange || item.tokenType || 'Unknown'}</span></td>
-            <td>${item.sageTeam || 'Ads UI'}</td>
             <td>${item.srpAdUseCase || 'Text Ad'}</td>
             <td>${(item.textAdComponents || item.component || '').replace(/\n/g, '<br>')}</td>
             <td>${item.tokenCategory || '-'}</td>
