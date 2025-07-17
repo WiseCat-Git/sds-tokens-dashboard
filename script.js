@@ -400,43 +400,43 @@ function createLECard(leName, leData) {
     const statusSegments = calculateStatusSegments(leData);
     
     card.innerHTML = `
-        <div class="le-card-header">
-            <div>
-                <div class="le-title">${leName}</div>
-                <div class="impact-badge impact-${impactLevel.toLowerCase()}">${impactLevel} Impact</div>
-            </div>
-            <button class="view-details-btn" onclick="showDetails()">View Details</button>
+    <div class="le-card-header">
+        <div class="le-header-content">
+            <div class="le-title">${leName}</div>
+            <div class="impact-badge impact-${impactLevel.toLowerCase()}">${impactLevel} Impact</div>
         </div>
-        
-        <div class="metrics-row">
-            <div class="metric-item">
-                <div class="metric-value">${tokensCount}</div>
-                <div class="metric-label">Tokens Changed</div>
-            </div>
-            <div class="metric-item">
-                <div class="metric-value">${componentsCount}</div>
-                <div class="metric-label">Components Affected</div>
-            </div>
-            <div class="metric-item">
-                <div class="metric-value">1</div>
-                <div class="metric-label">Ad Format Affected</div>
-            </div>
-        </div>
-        
-        <div class="status-timeline">
-            ${statusSegments.map(segment => 
-                `<div class="status-segment status-${segment}"></div>`
-            ).join('')}
-        </div>
-        <div class="status-labels">
-            <span>LE Planning</span>
-            <span>LE in Progress</span>
-            <span>Validating LC</span>
-            <span>Recently Launched</span>
-        </div>
-    `;
+        <button class="view-details-btn" onclick="showDetails()">View Details</button>
+    </div>
     
-    return card;
+    <div class="metrics-row">
+        <div class="metric-item">
+            <div class="metric-value">${tokensCount}</div>
+            <div class="metric-label">Tokens Changed</div>
+        </div>
+        <div class="metric-item">
+            <div class="metric-value">${componentsCount}</div>
+            <div class="metric-label">Components Affected</div>
+        </div>
+        <div class="metric-item">
+            <div class="metric-value">1</div>
+            <div class="metric-label">Ad Format Affected</div>
+        </div>
+    </div>
+    
+    <div class="status-timeline">
+        ${statusSegments.map(segment => 
+            `<div class="status-segment status-${segment}"></div>`
+        ).join('')}
+    </div>
+    <div class="status-labels">
+        <span>LE Planning</span>
+        <span>LE in Progress</span>
+        <span>Validating LC</span>
+        <span>Recently Launched</span>
+    </div>
+`;
+
+return card;
 }
 
 // Calculate impact level based on data

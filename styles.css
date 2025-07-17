@@ -121,6 +121,12 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 20px;
+    gap: 12px;
+}
+
+.le-header-content {
+    flex: 1;
+    min-width: 0;
 }
 
 .le-title {
@@ -128,6 +134,9 @@ body {
     font-weight: 500;
     color: #202124;
     margin-bottom: 8px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.4;
 }
 
 .impact-badge {
@@ -136,6 +145,11 @@ body {
     font-size: 12px;
     font-weight: 500;
     text-transform: uppercase;
+    min-width: 80px;
+    text-align: center;
+    display: inline-block;
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .impact-low {
