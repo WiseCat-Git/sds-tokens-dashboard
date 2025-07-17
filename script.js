@@ -465,11 +465,12 @@ function calculateStatusSegments(leData) {
     // Default segments
     const segments = ['inactive', 'inactive', 'inactive', 'inactive'];
     
-    // Map statuses in priority order (most specific first)
+    // Map statuses in priority order (FIXED NAMES)
     if (uniqueStatuses.includes('Recently launched')) {
         segments[3] = 'launched';
     }
-    if (uniqueStatuses.includes('Validating LC')) {
+    // FIX: Use the correct status name from Apps Script
+    if (uniqueStatuses.includes('LCs being validated')) {  // ✅ CORRECTED
         segments[2] = 'validating';
     }
     if (uniqueStatuses.includes('LE in Progress')) {
@@ -544,7 +545,7 @@ function getStatusClass(status) {
     
     const statusLower = status.toLowerCase();
     if (statusLower.includes('recently launched')) return 'recently-launched';
-    if (statusLower.includes('validating') || statusLower.includes('lcs being validated')) return 'validating-lc';
+    if (statusLower.includes('lcs being validated')) return 'validating-lc';  // ✅ CORRECTED
     if (statusLower.includes('unlaunched')) return 'unlaunched';
     
     return '';
