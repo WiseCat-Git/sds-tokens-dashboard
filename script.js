@@ -321,7 +321,7 @@ function initializeDashboard() {
     setInterval(loadTokenData, CONFIG.UPDATE_INTERVAL);
 }
 
-// Generate overview cards
+// generateOverviewCards function (around line 245)
 function generateOverviewCards() {
     const container = document.getElementById('le-cards-container');
     container.innerHTML = '';
@@ -329,10 +329,40 @@ function generateOverviewCards() {
     // Group data by LE name
     const groupedData = groupDataByLE(filteredData);
     
-    Object.entries(groupedData).forEach(([leName, leData]) => {
+    // Filter out old LEs and sort by priority
+    const recentLEs = Object.entries(groupedData)
+        .filter(([leName, leData]) => isRecentLE(leData))
+        .sort(([nameA, dataA], [nameB, dataB]) => {
+            const getStatusPriority = (leData) => {
+                const statuses = leData.map(item => item.affStatus || item.status || 'Unknown');
+                if (statuses.includes('LCs being validated')) return 1;      // HIGHEST PRIORITY
+                if (statuses.includes('Recently launched')) return 2;        // SECOND PRIORITY
+                if (statuses.includes('LE in Progress')) return 3;
+                if (statuses.includes('LE Planning')) return 4;
+                return 5;
+            };
+            
+            return getStatusPriority(dataA) - getStatusPriority(dataB);
+        });
+    
+    // Create cards only for recent LEs
+    recentLEs.forEach(([leName, leData]) => {
         const card = createLECard(leName, leData);
         container.appendChild(card);
     });
+    
+    // Show count of hidden LEs (optional info for stakeholders)
+    const hiddenCount = Object.keys(groupedData).length - recentLEs.length;
+    if (hiddenCount > 0) {
+        const infoDiv = document.createElement('div');
+        infoDiv.className = 'hidden-les-info';
+        infoDiv.innerHTML = `
+            <div style="text-align: center; color: #5f6368; font-size: 14px; padding: 16px; background: #f8f9fa; border-radius: 8px; margin-top: 16px;">
+                📊 ${hiddenCount} older LE${hiddenCount > 1 ? 's' : ''} hidden (more than 1 quarter old)
+            </div>
+        `;
+        container.appendChild(infoDiv);
+    }
 }
 
 // Group data by LE name
@@ -379,6 +409,54 @@ function extractLEName(record) {
     }
     
     return `${tokenType} Token Changes`;
+}
+
+// Check if an LE is recent (within the last quarter)
+function isRecentLE(leData) {
+    // Get current date and calculate one quarter ago
+    const now = new Date();
+    const oneQuarterAgo = new Date();
+    oneQuarterAgo.setMonth(now.getMonth() - 3);
+    
+    // Check if any record in this LE has recent activity
+    return leData.some(record => {
+        const targetQuarter = record.leTargetLaunchQuarter || record.sdsLaunchTarget;
+        
+        if (!targetQuarter) return true; // Include if no date specified
+        
+        // Parse quarter format (e.g., "2025 Q1", "Q1 2025")
+        const quarterDate = parseQuarterToDate(targetQuarter);
+        return quarterDate >= oneQuarterAgo;
+    });
+}
+
+// Helper function to parse quarter strings to dates
+function parseQuarterToDate(quarterStr) {
+    if (!quarterStr) return new Date();
+    
+    const str = quarterStr.toString().trim();
+    
+    // Handle different quarter formats
+    const yearMatch = str.match(/(\d{4})/);
+    const quarterMatch = str.match(/Q(\d)/i);
+    
+    if (yearMatch && quarterMatch) {
+        const year = parseInt(yearMatch[1]);
+        const quarter = parseInt(quarterMatch[1]);
+        
+        // Convert quarter to month (Q1=Jan, Q2=Apr, Q3=Jul, Q4=Oct)
+        const month = (quarter - 1) * 3;
+        return new Date(year, month, 1);
+    }
+    
+    // Handle date objects or other formats
+    if (str.includes('2024') || str.includes('2025')) {
+        // Extract year and assume current quarter if no Q specified
+        const year = parseInt(yearMatch[1]);
+        return new Date(year, 0, 1); // Default to start of year
+    }
+    
+    return new Date(); // Default to current date if parsing fails
 }
 
 // Create LE card element
