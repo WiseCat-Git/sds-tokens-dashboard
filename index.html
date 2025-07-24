@@ -215,5 +215,75 @@
             background: #1557b0;
         }
     </style>
+    <!-- LE Details Modal -->
+<div id="le-details-modal" class="le-modal-overlay" style="display: none;">
+    <div class="le-modal-container">
+        <div class="le-modal-header">
+            <div class="le-modal-title-section">
+                <h2 id="modal-le-title">LE Name</h2>
+                <span id="modal-le-impact" class="impact-badge">Impact</span>
+            </div>
+            <button onclick="closeLEDetailsModal()" class="le-modal-close">×</button>
+        </div>
+        
+        <div class="le-modal-content">
+            <!-- Summary Section -->
+            <div class="le-modal-summary">
+                <div class="modal-metrics-row">
+                    <div class="modal-metric-item">
+                        <div class="modal-metric-value" id="modal-tokens-count">0</div>
+                        <div class="modal-metric-label">Tokens Changed</div>
+                    </div>
+                    <div class="modal-metric-item">
+                        <div class="modal-metric-value" id="modal-components-count">0</div>
+                        <div class="modal-metric-label">Components Affected</div>
+                    </div>
+                    <div class="modal-metric-item">
+                        <div class="modal-metric-value">1</div>
+                        <div class="modal-metric-label">Ad Format Affected</div>
+                    </div>
+                </div>
+                
+                <!-- Status Timeline -->
+                <div class="modal-status-section">
+                    <h3>Launch Progress</h3>
+                    <div class="modal-status-timeline" id="modal-status-timeline">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                    <div class="modal-status-labels">
+                        <span>LE Planning</span>
+                        <span>LE in Progress</span>
+                        <span>Validating LC</span>
+                        <span>Recently Launched</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Detailed Tokens Table -->
+            <div class="le-modal-details">
+                <h3>Token Details</h3>
+                <div class="modal-table-container">
+                    <table class="modal-details-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Token</th>
+                                <th>Component(s)</th>
+                                <th>Surface</th>
+                                <th>Theme</th>
+                                <th>Current Value</th>
+                                <th>New Value</th>
+                                <th>Doc</th>
+                            </tr>
+                        </thead>
+                        <tbody id="modal-table-body">
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -483,7 +483,7 @@ function createLECard(leName, leData) {
             <div class="le-title">${leName}</div>
             <div class="impact-badge impact-${impactLevel.toLowerCase()}">${impactLevel} Impact</div>
         </div>
-        <button class="view-details-btn" onclick="showDetails()">View Details</button>
+        <button class="view-details-btn" onclick="showLEDetailsModal('${leName.replace(/'/g, "\\'")}', ${JSON.stringify(leData).replace(/'/g, "\\'")})">View Details</button>
     </div>
     
     <div class="metrics-row">
@@ -783,3 +783,79 @@ function testBigQueryConnection() {
 
 // Expose test function globally for debugging
 window.testBigQueryConnection = testBigQueryConnection;
+
+// Add these functions to your script.js file
+
+// Show LE Details Modal
+function showLEDetailsModal(leName, leData) {
+    const modal = document.getElementById('le-details-modal');
+    
+    // Populate modal header
+    document.getElementById('modal-le-title').textContent = leName;
+    
+    const impactLevel = calculateImpactLevel(leData);
+    const impactBadge = document.getElementById('modal-le-impact');
+    impactBadge.textContent = `${impactLevel} Impact`;
+    impactBadge.className = `impact-badge impact-${impactLevel.toLowerCase()}`;
+    
+    // Populate metrics
+    document.getElementById('modal-tokens-count').textContent = leData.length;
+    
+    const componentSets = leData.map(item => {
+        const components = item.textAdComponents || item.component || item.components || '';
+        return components.toString().split(/[\n,]/).map(c => c.trim()).filter(c => c);
+    });
+    const allComponents = [...new Set(componentSets.flat())];
+    document.getElementById('modal-components-count').textContent = allComponents.length;
+    
+    // Populate status timeline
+    const statusSegments = calculateStatusSegments(leData);
+    const statusTimeline = document.getElementById('modal-status-timeline');
+    statusTimeline.innerHTML = statusSegments.map(segment => 
+        `<div class="status-segment status-${segment}"></div>`
+    ).join('');
+    
+    // Populate details table
+    const tableBody = document.getElementById('modal-table-body');
+    tableBody.innerHTML = leData.map(item => `
+        <tr>
+            <td><span class="token-type-badge type-${(item.tokenChange || item.tokenType || '').toLowerCase().includes('color') ? 'color' : 'font'}">${item.tokenChange || item.tokenType || 'Unknown'}</span></td>
+            <td>${item.sdsToken || '-'}</td>
+            <td>${(item.textAdComponents || item.component || '').replace(/\n/g, '<br>')}</td>
+            <td>${item.surface || '-'}</td>
+            <td>${item.theme || '-'}</td>
+            <td>${formatValue(item.currentSdsValue)}</td>
+            <td>${formatValue(item.upcomingSdsValue)}</td>
+            <td>${item.sdsLaunchDoc ? `<a href="${item.sdsLaunchDoc}" style="color: #1a73e8;" target="_blank">Link</a>` : '-'}</td>
+        </tr>
+    `).join('');
+    
+    // Show modal
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+// Close LE Details Modal
+function closeLEDetailsModal() {
+    const modal = document.getElementById('le-details-modal');
+    modal.style.display = 'none';
+    document.body.style.overflow = ''; // Restore scrolling
+}
+
+// Close modal when clicking outside
+document.addEventListener('click', function(event) {
+    const modal = document.getElementById('le-details-modal');
+    if (event.target === modal) {
+        closeLEDetailsModal();
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        const modal = document.getElementById('le-details-modal');
+        if (modal.style.display === 'flex') {
+            closeLEDetailsModal();
+        }
+    }
+});
