@@ -1,6 +1,7 @@
 // Global variables
 let tokenData = [];
 let filteredData = [];
+let leDataStore = {};
 
 // Configuration
 const CONFIG = {
@@ -321,10 +322,13 @@ function initializeDashboard() {
     setInterval(loadTokenData, CONFIG.UPDATE_INTERVAL);
 }
 
-// generateOverviewCards function (around line 245)
+// Update the generateOverviewCards function to store LE data
 function generateOverviewCards() {
     const container = document.getElementById('le-cards-container');
     container.innerHTML = '';
+    
+    // Clear previous LE data
+    leDataStore = {};
     
     // Group data by LE name
     const groupedData = groupDataByLE(filteredData);
@@ -335,8 +339,8 @@ function generateOverviewCards() {
         .sort(([nameA, dataA], [nameB, dataB]) => {
             const getStatusPriority = (leData) => {
                 const statuses = leData.map(item => item.affStatus || item.status || 'Unknown');
-                if (statuses.includes('LCs being validated')) return 1;      // HIGHEST PRIORITY
-                if (statuses.includes('Recently launched')) return 2;        // SECOND PRIORITY
+                if (statuses.includes('LCs being validated')) return 1;
+                if (statuses.includes('Recently launched')) return 2;
                 if (statuses.includes('LE in Progress')) return 3;
                 if (statuses.includes('LE Planning')) return 4;
                 return 5;
@@ -347,11 +351,15 @@ function generateOverviewCards() {
     
     // Create cards only for recent LEs
     recentLEs.forEach(([leName, leData]) => {
-        const card = createLECard(leName, leData);
+        // Store LE data globally with unique key
+        const leKey = leName.replace(/[^a-zA-Z0-9]/g, '_'); // Safe key
+        leDataStore[leKey] = leData;
+        
+        const card = createLECard(leName, leKey); // Pass key instead of data
         container.appendChild(card);
     });
     
-    // Show count of hidden LEs (optional info for stakeholders)
+    // Show count of hidden LEs
     const hiddenCount = Object.keys(groupedData).length - recentLEs.length;
     if (hiddenCount > 0) {
         const infoDiv = document.createElement('div');
@@ -459,11 +467,12 @@ function parseQuarterToDate(quarterStr) {
     return new Date(); // Default to current date if parsing fails
 }
 
-// Create LE card element
-function createLECard(leName, leData) {
+// Update the createLECard function signature and button
+function createLECard(leName, leKey) { // Add leKey parameter
     const card = document.createElement('div');
     card.className = 'le-card';
     
+    const leData = leDataStore[leKey]; // Get data from global store
     const tokensCount = leData.length;
     
     // Count unique components properly
@@ -483,7 +492,7 @@ function createLECard(leName, leData) {
             <div class="le-title">${leName}</div>
             <div class="impact-badge impact-${impactLevel.toLowerCase()}">${impactLevel} Impact</div>
         </div>
-        <button class="view-details-btn" onclick="showLEDetailsModal('${leName.replace(/'/g, "\\'")}', ${JSON.stringify(leData).replace(/'/g, "\\'")})">View Details</button>
+        <button class="view-details-btn" onclick="showLEDetailsModal('${leKey}')">View Details</button>
     </div>
     
     <div class="metrics-row">
@@ -787,11 +796,22 @@ window.testBigQueryConnection = testBigQueryConnection;
 // Add these functions to your script.js file
 
 // Show LE Details Modal
-function showLEDetailsModal(leName, leData) {
+function showLEDetailsModal(leKey) {
+    const leData = leDataStore[leKey];
+    const leName = Object.keys(leDataStore).find(key => key === leKey);
+    
+    if (!leData) {
+        console.error('LE data not found for key:', leKey);
+        return;
+    }
+    
+    // Get the original LE name by finding it in the data
+    const originalLeName = leData[0]?.leName || leData[0]?.sdsStatus || 'Unknown LE';
+    
     const modal = document.getElementById('le-details-modal');
     
     // Populate modal header
-    document.getElementById('modal-le-title').textContent = leName;
+    document.getElementById('modal-le-title').textContent = originalLeName;
     
     const impactLevel = calculateImpactLevel(leData);
     const impactBadge = document.getElementById('modal-le-impact');
