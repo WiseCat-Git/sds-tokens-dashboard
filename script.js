@@ -322,7 +322,7 @@ function initializeDashboard() {
     setInterval(loadTokenData, CONFIG.UPDATE_INTERVAL);
 }
 
-// generateOverviewCards function (around line 245)
+// generateOverviewCards function - UPDATED to include status legend
 function generateOverviewCards() {
     const container = document.getElementById('le-cards-container');
     container.innerHTML = '';
@@ -371,6 +371,64 @@ function generateOverviewCards() {
         `;
         container.appendChild(infoDiv);
     }
+    
+    // ✨ NEW: Add status legend at the bottom
+    generateStatusLegend();
+}
+
+// Generate status legend for the overview page
+function generateStatusLegend() {
+    const container = document.getElementById('le-cards-container');
+    
+    // Status definitions with colors matching your CSS
+    const statusTypes = [
+        {
+            label: 'LE Planning',
+            class: 'status-bar-planning',
+            description: 'Initial planning phase'
+        },
+        {
+            label: 'LE in Progress', 
+            class: 'status-bar-progress',
+            description: 'Active development'
+        },
+        {
+            label: 'Validating LC',
+            class: 'status-bar-validating', 
+            description: 'Under validation'
+        },
+        {
+            label: 'Recently Launched',
+            class: 'status-bar-launched',
+            description: 'Successfully deployed'
+        },
+        {
+            label: 'Unlaunched',
+            class: 'status-bar-unlaunched',
+            description: 'Cancelled or paused'
+        },
+        {
+            label: 'Status Unknown',
+            class: 'status-bar-unknown',
+            description: 'Status not available'
+        }
+    ];
+    
+    const legend = document.createElement('div');
+    legend.className = 'status-legend';
+    legend.innerHTML = `
+        <h3>Status Reference Guide</h3>
+        <div class="status-legend-grid">
+            ${statusTypes.map(status => `
+                <div class="status-legend-item">
+                    <div class="status-legend-bar ${status.class}"></div>
+                    <div class="status-legend-label">${status.label}</div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+    
+    container.appendChild(legend);
 }
 
 // Group data by LE name
