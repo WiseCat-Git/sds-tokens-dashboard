@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDS Tokens Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="login-screen" class="auth-screen" style="display: none;">
+        <div class="auth-container">
+            <div class="auth-header">
+                <h1>SDS Tokens Dashboard</h1>
+                <p>Access restricted to authorized team members</p>
+            </div>
+            <button onclick="accessControl.authenticateUser().then(success => success ? accessControl.showDashboard() : accessControl.showAccessDenied())" 
+                    class="simple-login-btn">
+                Access Dashboard
+            </button>
+            <div class="auth-footer">
+                <p>Please have your Google email address ready</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Access Denied Screen -->
+    <div id="access-denied-screen" class="auth-screen" style="display: none;">
+        <div class="auth-container">
+            <div class="auth-header">
+                <h1>Access Denied</h1>
+                <p>Sorry, your email address is not authorized to access this dashboard.</p>
+            </div>
+            <div class="denied-info">
+                <p><strong>Your email:</strong> <span id="denied-user-email"></span></p>
+                <p>Please contact lopezlozano@google.com for access.</p>
+            </div>
+            <button onclick="accessControl.logout()" class="retry-btn">Try Different Email</button>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div class="dashboard-container" id="dashboard-container" style="display: none;">
+        <!-- Header -->
+        <div class="header">
+            <h1>Upcoming Token Launches</h1>
+            <div class="header-right">
+                <div id="user-info" class="user-info">
+                    <!-- User info will be populated by JavaScript -->
+                </div>
+                <div class="last-updated" id="last-updated">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+                <div class="page-tabs">
+                    <div class="tab active" onclick="showOverview()">Overview</div>
+                    <div class="tab" onclick="showDetails()">Details</div>
+                    <div class="tab admin-only" onclick="showAdmin()" id="admin-tab" style="display: none;">Admin</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Loading State -->
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Loading token data...</p>
+        </div>
+        
+        <!-- Disclaimer -->
+        <div class="disclaimer">
+            * Text ad is currently the only format with managed tokens<br>
+            ** Ads UI is the only team with managed tokens
+        </div>
+        
+        <!-- Overview Page -->
+        <div class="overview-page" id="overview-page">
+            <div class="le-cards-container" id="le-cards-container">
+                <!-- Cards will be dynamically generated -->
+            </div>
+        </div>
+        
+        <!-- Details Page -->
+        <div class="details-page" id="details-page">
+            <!-- Filters Panel -->
+            <div class="filters-panel">
+                <div class="filters-grid" id="filters-grid">
+                    <!-- Filters will be dynamically generated -->
+                </div>
+            </div>
+            
+            <!-- Details Table -->
+            <div class="details-table-container">
+                <table class="details-table">
+                    <thead id="table-header">
+                        <!-- Headers will be dynamically generated -->
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Rows will be dynamically generated -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Admin Page -->
+        <div class="admin-page" id="admin-page" style="display: none;">
+            <div class="admin-panel" id="admin-panel">
+                <h2>Dashboard Administration</h2>
+                
+                <div class="admin-section">
+                    <h3>Add Authorized User</h3>
+                    <div class="add-user-form">
+                        <input type="email" id="new-user-email" placeholder="Enter email address" class="email-input">
+                        <button onclick="accessControl.addUser()" class="add-user-btn">Add User</button>
+                    </div>
+                    <p style="color: #5f6368; font-size: 14px; margin-top: 8px;">
+                        Add Google email addresses of team members who should have access
+                    </p>
+                </div>
+
+                <div class="admin-section">
+                    <h3>Authorized Users (<span id="user-count">0</span>)</h3>
+                    <div id="authorized-users-list" class="users-list">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="admin-section">
+                    <h3>Dashboard Settings</h3>
+                    <div class="settings-info">
+                        <p><strong>Data Source:</strong> <span id="current-data-source">Loading...</span></p>
+                        <p><strong>Environment:</strong> <span id="current-environment">Local Development</span></p>
+                        <p><strong>Last Updated:</strong> <span id="admin-last-updated">Loading...</span></p>
+                        <p><strong>Auto Refresh:</strong> Every 5 minutes</p>
+                        <p><strong>Session Duration:</strong> 8 hours</p>
+                    </div>
+                </div>
+
+                <div class="admin-section">
+                    <h3>Quick Actions</h3>
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        <button onclick="location.reload()" class="admin-action-btn">Refresh Dashboard</button>
+                        <button onclick="localStorage.clear(); location.reload()" class="admin-action-btn" style="background: #d93025;">Reset All Data</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Load Scripts -->
+    <script src="auth/access-control.js"></script>
+    <script src="script.js"></script>
+    
+    <!-- Initialize Authentication -->
+    <script>
+        // Initialize access control when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            accessControl.initialize();
+        });
+
+        // Navigation functions for admin
+        function showAdmin() {
+            document.getElementById('overview-page').style.display = 'none';
+            document.getElementById('details-page').style.display = 'none';
+            document.getElementById('admin-page').style.display = 'block';
+            
+            // Update tab styling
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.getElementById('admin-tab').classList.add('active');
+            
+            // Update admin info
+            if (accessControl.isAdmin(accessControl.currentUser.email)) {
+                document.getElementById('current-data-source').textContent = CONFIG.USE_LIVE_DATA ? 'Google Apps Script API' : 'Local JSON File';
+                document.getElementById('current-environment').textContent = CONFIG.USE_LIVE_DATA ? 'Production' : 'Development';
+                document.getElementById('user-count').textContent = accessControl.authorizedEmails.length;
+            }
+        }
+
+        // Update existing navigation functions
+        function showOverview() {
+            document.getElementById('overview-page').style.display = 'block';
+            document.getElementById('details-page').style.display = 'none';
+            document.getElementById('admin-page').style.display = 'none';
+            
+            // Update tab styling
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            tabs[0].classList.add('active');
+        }
+
+        function showDetails() {
+            document.getElementById('overview-page').style.display = 'none';
+            document.getElementById('details-page').style.display = 'block';
+            document.getElementById('admin-page').style.display = 'none';
+            
+            // Update tab styling
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            tabs[1].classList.add('active');
+        }
+    </script>
+    
+    <style>
+        .admin-action-btn {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .admin-action-btn:hover {
+            background: #1557b0;
+        }
+    </style>
+</body>
+</html>

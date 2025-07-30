@@ -1,7 +1,6 @@
 // Global variables
 let tokenData = [];
 let filteredData = [];
-let leDataStore = {}; // Store for LE data by key
 
 // Configuration
 const CONFIG = {
@@ -330,9 +329,6 @@ function generateOverviewCards() {
     // Group data by LE name
     const groupedData = groupDataByLE(filteredData);
     
-    // Store grouped data for modal access
-    leDataStore = {};
-    
     // Filter out old LEs and sort by priority
     const recentLEs = Object.entries(groupedData)
         .filter(([leName, leData]) => isRecentLE(leData))
@@ -351,11 +347,7 @@ function generateOverviewCards() {
     
     // Create cards only for recent LEs
     recentLEs.forEach(([leName, leData]) => {
-        // Create unique key for each LE
-        const leKey = leName.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
-        leDataStore[leKey] = leData;
-        
-        const card = createLECard(leName, leKey);
+        const card = createLECard(leName, leData);
         container.appendChild(card);
     });
     
@@ -467,61 +459,11 @@ function parseQuarterToDate(quarterStr) {
     return new Date(); // Default to current date if parsing fails
 }
 
-// Replace calculateStatusSegments with calculateStatusBar
-function calculateStatusBar(leData) {
-    const statuses = leData.map(item => item.affStatus || item.status || 'Unknown');
-    const uniqueStatuses = [...new Set(statuses)];
-    
-    // Determine primary status (priority order)
-    if (uniqueStatuses.includes('LCs being validated')) {
-        return { 
-            status: 'validating', 
-            label: 'Validating LC',
-            class: 'status-bar-validating'
-        };
-    }
-    if (uniqueStatuses.includes('Recently launched')) {
-        return { 
-            status: 'launched', 
-            label: 'Recently Launched',
-            class: 'status-bar-launched'
-        };
-    }
-    if (uniqueStatuses.includes('LE in Progress')) {
-        return { 
-            status: 'progress', 
-            label: 'LE in Progress',
-            class: 'status-bar-progress'
-        };
-    }
-    if (uniqueStatuses.includes('LE Planning')) {
-        return { 
-            status: 'planning', 
-            label: 'LE Planning',
-            class: 'status-bar-planning'
-        };
-    }
-    if (uniqueStatuses.includes('Unlaunched')) {
-        return { 
-            status: 'unlaunched', 
-            label: 'Unlaunched',
-            class: 'status-bar-unlaunched'
-        };
-    }
-    
-    return { 
-        status: 'unknown', 
-        label: 'Status Unknown',
-        class: 'status-bar-unknown'
-    };
-}
-
-// Update createLECard function
-function createLECard(leName, leKey) {
+// Create LE card element
+function createLECard(leName, leData) {
     const card = document.createElement('div');
     card.className = 'le-card';
     
-    const leData = leDataStore[leKey];
     const tokensCount = leData.length;
     
     // Count unique components properly
@@ -533,7 +475,7 @@ function createLECard(leName, leKey) {
     const componentsCount = allComponents.length;
     
     const impactLevel = calculateImpactLevel(leData);
-    const statusBar = calculateStatusBar(leData); // NEW: Get status bar info
+    const statusSegments = calculateStatusSegments(leData);
     
     card.innerHTML = `
     <div class="le-card-header">
@@ -541,7 +483,7 @@ function createLECard(leName, leKey) {
             <div class="le-title">${leName}</div>
             <div class="impact-badge impact-${impactLevel.toLowerCase()}">${impactLevel} Impact</div>
         </div>
-        <button class="view-details-btn" onclick="showLEDetailsModal('${leKey}')">View Details</button>
+        <button class="view-details-btn" onclick="showDetails()">View Details</button>
     </div>
     
     <div class="metrics-row">
@@ -560,8 +502,15 @@ function createLECard(leName, leKey) {
     </div>
     
     <div class="status-timeline">
-        <div class="status-bar-full ${statusBar.class}"></div>
-        <div class="status-label-single">${statusBar.label}</div>
+        ${statusSegments.map(segment => 
+            `<div class="status-segment status-${segment}"></div>`
+        ).join('')}
+    </div>
+    <div class="status-labels">
+        <span>LE Planning</span>
+        <span>LE in Progress</span>
+        <span>Validating LC</span>
+        <span>Recently Launched</span>
     </div>
 `;
 
@@ -586,119 +535,30 @@ function calculateImpactLevel(leData) {
     return 'Low';
 }
 
-// Update modal status display
-function showLEDetailsModal(leKey) {
-    const leData = leDataStore[leKey];
-    if (!leData) {
-        console.error('LE data not found for key:', leKey);
-        return;
-    }
-
-    // Create modal overlay
-    const overlay = document.createElement('div');
-    overlay.className = 'le-modal-overlay';
-    overlay.onclick = (e) => {
-        if (e.target === overlay) {
-            closeLEDetailsModal();
-        }
-    };
-
-    // Get LE name from stored data
-    const leName = extractLEName(leData[0]);
-    const statusBar = calculateStatusBar(leData);
-    const impactLevel = calculateImpactLevel(leData);
-
-    // Count metrics
-    const tokensCount = leData.length;
-    const componentSets = leData.map(item => {
-        const components = item.textAdComponents || item.component || item.components || '';
-        return components.toString().split(/[\n,]/).map(c => c.trim()).filter(c => c);
-    });
-    const allComponents = [...new Set(componentSets.flat())];
-    const componentsCount = allComponents.length;
-
-    overlay.innerHTML = `
-        <div class="le-modal-container">
-            <div class="le-modal-header">
-                <div class="le-modal-title-section">
-                    <h2>${leName}</h2>
-                    <div class="impact-badge impact-${impactLevel.toLowerCase()}">${impactLevel} Impact</div>
-                </div>
-                <button class="le-modal-close" onclick="closeLEDetailsModal()">&times;</button>
-            </div>
-            
-            <div class="le-modal-content">
-                <div class="modal-metrics-row">
-                    <div class="modal-metric-item">
-                        <div class="modal-metric-value">${tokensCount}</div>
-                        <div class="modal-metric-label">Tokens Changed</div>
-                    </div>
-                    <div class="modal-metric-item">
-                        <div class="modal-metric-value">${componentsCount}</div>
-                        <div class="modal-metric-label">Components Affected</div>
-                    </div>
-                    <div class="modal-metric-item">
-                        <div class="modal-metric-value">1</div>
-                        <div class="modal-metric-label">Ad Format Affected</div>
-                    </div>
-                </div>
-                
-                <div class="modal-status-section">
-                    <h3>Status</h3>
-                    <div id="modal-status-timeline">
-                        <div class="modal-status-bar-full ${statusBar.class}"></div>
-                        <div class="status-label-single">${statusBar.label}</div>
-                    </div>
-                </div>
-                
-                <div class="le-modal-details">
-                    <h3>Token Details</h3>
-                    <div class="modal-table-container">
-                        <table class="modal-details-table">
-                            <thead>
-                                <tr>
-                                    <th>Type</th>
-                                    <th>Component(s)</th>
-                                    <th>Token</th>
-                                    <th>Surface</th>
-                                    <th>Old Value</th>
-                                    <th>New Value</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${leData.map(item => `
-                                    <tr>
-                                        <td><span class="token-type-badge type-${(item.tokenChange || item.tokenType || '').toLowerCase().includes('color') ? 'color' : 'font'}">${item.tokenChange || item.tokenType || 'Unknown'}</span></td>
-                                        <td>${(item.textAdComponents || item.component || '').replace(/\n/g, '<br>')}</td>
-                                        <td>${item.sdsToken || '-'}</td>
-                                        <td>${item.surface || '-'}</td>
-                                        <td>${formatValue(item.currentSdsValue)}</td>
-                                        <td>${formatValue(item.upcomingSdsValue)}</td>
-                                        <td><span class="status-badge status-${getStatusClass(item.affStatus)}">${item.affStatus || '-'}</span></td>
-                                    </tr>
-                                `).join('')}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-
-    document.body.appendChild(overlay);
+// Calculate status segments for timeline
+function calculateStatusSegments(leData) {
+    const statuses = leData.map(item => item.affStatus || item.status || 'Unknown');
+    const uniqueStatuses = [...new Set(statuses)];
     
-    // Prevent body scrolling
-    document.body.style.overflow = 'hidden';
-}
-
-// Close modal function
-function closeLEDetailsModal() {
-    const overlay = document.querySelector('.le-modal-overlay');
-    if (overlay) {
-        overlay.remove();
-        document.body.style.overflow = '';
+    // Default segments
+    const segments = ['inactive', 'inactive', 'inactive', 'inactive'];
+    
+    // Map statuses in priority order (FIXED NAMES)
+    if (uniqueStatuses.includes('Recently launched')) {
+        segments[3] = 'launched';
     }
+    // FIX: Use the correct status name from Apps Script
+    if (uniqueStatuses.includes('LCs being validated')) {  // ✅ CORRECTED
+        segments[2] = 'validating';
+    }
+    if (uniqueStatuses.includes('LE in Progress')) {
+        segments[1] = 'progress';
+    }
+    if (uniqueStatuses.includes('LE Planning')) {
+        segments[0] = 'planning';
+    }
+    
+    return segments;
 }
 
 // Generate details table
